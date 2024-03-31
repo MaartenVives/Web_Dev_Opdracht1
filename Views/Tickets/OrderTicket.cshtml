@@ -1,0 +1,64 @@
+﻿@model IEnumerable<opdracht_1.Models.Tickets>
+<style>
+    .ticket-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .ticket-item {
+        width: 30%; /* Pas de breedte van elk ticket-item aan */
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .ticket-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .ticket-details h3 {
+        margin-top: 0;
+    }
+    h2 {
+        color: #4CAF50; /* Tekstkleur instellen */
+        text-align: center;
+    }
+    .btn-primary {
+        background-color: #4CAF50; /* Achtergrondkleur van de knop instellen */
+        border: none;
+        color: white; /* Tekstkleur instellen */
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%; /* Volledige breedte van de knop */
+        box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+    }
+</style>
+<h2>Plaats een bestelling</h2>
+<form asp-action="OrderTicket" method="post">
+    <div class="ticket-container">
+        @foreach (var ticket in Model)
+        {
+                <div class="ticket-item">
+                    <img src="/Content/Ticket.png">
+                    <div class="ticket-details">
+                        <h3>@ticket.Name</h3>
+                        <p>Prijs: €@ticket.Price</p>
+                        <div class="form-group">
+                            <label for="quantity_@ticket.Id">Hoeveelheid:</label>
+                            <input type="number" id="quantity_@ticket.Id" name="quantities[@ticket.Id]" class="form-control" /> <!-- Geef elk inputveld een unieke naam -->
+                        </div>
+                    </div>
+                </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Voeg toe aan bestelling</button>
+</form>

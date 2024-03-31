@@ -1,0 +1,105 @@
+﻿
+@model IEnumerable<opdracht_1.Models.OrderDetails>
+<style>
+    body {
+        background-color: #f4f4f4; /* Achtergrondkleur instellen */
+    }
+
+    .login-container {
+        width: 300px;
+        margin: auto;
+        margin-top: 100px; /* Marge bovenaan aanpassen voor verticale centrering */
+    }
+
+    h2 {
+        color: #4CAF50; /* Tekstkleur instellen */
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: center; /* Centreren van form-group */
+    }
+
+    label {
+        display: block;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button[type="submit"] {
+        width: 100%; /* Volledige breedte van de inputvelden en de knop */
+        margin-bottom: 10px;
+        padding: 8px;
+        box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+    }
+
+    .btn-primary {
+        background-color: #4CAF50; /* Achtergrondkleur van de knop instellen */
+        border: none;
+        color: white; /* Tekstkleur instellen */
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%; /* Volledige breedte van de knop */
+        box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+    }
+
+    a {
+        color: #4CAF50; /* Kleur van de koppeling instellen */
+        text-decoration: none;
+    }
+        .ticket-table {
+        width: 50%; /* Breedte van de tabel */
+        margin: auto; /* Automatisch centreren van de tabel */
+        border-collapse: collapse; /* Samenvoegen van de tabelranden */
+    }
+
+    .ticket-table th, .ticket-table td {
+        padding: 8px; /* Ruimte rondom de celinhoud */
+        border: 1px solid #ddd; /* Randstijl en kleur */
+        text-align: left; /* Links uitlijnen van de tekst */
+    }
+
+    .ticket-table th {
+        background-color: #f2f2f2; /* Achtergrondkleur voor koppen */
+    }
+
+    .ticket-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Achtergrondkleur voor even rijen */
+    }
+</style>
+<h2>Bestelling Details</h2>
+
+<table class="ticket-table">
+    <thead>
+        <tr>
+            <th>Ticket Naam</th>
+            <th>Quantity</th>
+            <th>Price per piece</th>
+            <th>Price total</th>
+            <th>Actie</th> <!-- Nieuwe kolom voor de knop -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderDetail in Model)
+        {
+                    <tr>
+                        <td>@orderDetail.Ticket.Name</td>
+                        <td>@orderDetail.Quantity</td>
+                        <td>@orderDetail.Ticket.Price</td>
+                        <td>@(orderDetail.Ticket.Price * orderDetail.Quantity)</td>
+                                        <td>
+                            <form asp-action="RemoveOrder" asp-route-id="@orderDetail.Id" method="post">
+                                <button type="submit" class="btn-primary">Verwijder</button>
+                            </form>
+                        </td>
+                    </tr>
+        }
+    </tbody>
+</table>

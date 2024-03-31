@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #f4f4f4; /* Achtergrondkleur instellen */
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px; /* Marge bovenaan aanpassen voor verticale centrering */
+            text-align: center; /* Centreren van inhoud */
+        }
+
+        h2 {
+            color: #4CAF50; /* Tekstkleur instellen */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        button[type="submit"] {
+            width: 100%; /* Volledige breedte van de inputvelden en de knop */
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+        }
+
+        .btn-primary {
+            background-color: #4CAF50; /* Achtergrondkleur van de knop instellen */
+            border: none;
+            color: white; /* Tekstkleur instellen */
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%; /* Volledige breedte van de knop */
+            box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+        }
+
+        a {
+            color: #4CAF50; /* Kleur van de koppeling instellen */
+            text-decoration: none;
+        }
+
+        .ticket-table {
+            width: 50%; /* Breedte van de tabel */
+            margin: auto; /* Automatisch centreren van de tabel */
+            border-collapse: collapse; /* Samenvoegen van de tabelranden */
+        }
+
+        .ticket-table th, .ticket-table td {
+            padding: 8px; /* Ruimte rondom de celinhoud */
+            border: 1px solid #ddd; /* Randstijl en kleur */
+            text-align: left; /* Links uitlijnen van de tekst */
+        }
+
+        .ticket-table th {
+            background-color: #f2f2f2; /* Achtergrondkleur voor koppen */
+        }
+
+        .ticket-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Achtergrondkleur voor even rijen */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="login">
+            <div class="form-group">
+                <label for="userName">Gebruikersnaam:</label>
+                <input type="text" id="userName" name="userName" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit" class="btn-primary">Inloggen</button>
+        </form>
+        <p>Nog geen account? <a href="register">Registreren</a></p>
+    </div>
+</body>
+</html>

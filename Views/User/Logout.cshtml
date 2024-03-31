@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Uitloggen</title>
+    <style>
+        body {
+            background-color: #f4f4f4; /* Achtergrondkleur instellen */
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px; /* Marge bovenaan aanpassen voor verticale centrering */
+            text-align: center; /* Centreren van inhoud */
+        }
+
+        h2 {
+            color: #4CAF50; /* Tekstkleur instellen */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50; /* Achtergrondkleur van de knop instellen */
+            border: none;
+            color: white; /* Tekstkleur instellen */
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%; /* Volledige breedte van de knop */
+            box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+        }
+
+        /* Verberg standaard de uitlogtekst */
+        #uitlogTekst {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Uitloggen</h2>
+    <p>Weet je zeker dat je wilt uitloggen?</p>
+
+    <form id="uitlogForm" asp-controller="User" asp-action="Logout" method="post">
+        <button id="uitlogKnop" type="submit" class="btn btn-primary">Uitloggen</button>
+    </form>
+
+    <!-- Tekst om weer te geven na succesvol uitloggen -->
+    <p id="uitlogTekst">Je bent succesvol uitgelogd.</p>
+</div>
+
+<script>
+    // Voeg een event listener toe aan het uitlogformulier
+    document.getElementById("uitlogForm").addEventListener("submit", function (event) {
+        // Voorkom dat het formulier standaardgedrag uitvoert (navigeren naar een andere pagina)
+        event.preventDefault();
+
+        // Verberg de uitlogknop
+        document.getElementById("uitlogKnop").style.display = "none";
+
+        // Laat de uitlogtekst zien
+        document.getElementById("uitlogTekst").style.display = "block";
+    });
+</script>
+
+</body>
+</html>

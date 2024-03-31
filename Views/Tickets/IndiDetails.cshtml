@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Afrekenen</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Zoo Afrekenen</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Order nummer</th>
+            <th>Ticket Naam</th>
+            <th>Quantity</th>
+            <th>Price per piece</th>
+            <th>Price total</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var order in Model)
+            {
+                foreach (var orderDetail in order.OrderDetails)
+                {
+                        <tr>                             
+                            <td>@order.Id</td>
+                            <td>@orderDetail.Ticket.Name</td>
+                            <td>@orderDetail.Quantity</td>
+                            <td>@orderDetail.Ticket.Price</td>
+                            <td>@(orderDetail.Ticket.Price * orderDetail.Quantity)</td>
+                        </tr>
+                }
+            }
+    </tbody>
+</table>
+
+<div class="total">
+        @{
+            decimal totalPrice = 0;
+            foreach (var order in Model)
+            {
+                foreach (var orderDetail in order.OrderDetails)
+                {
+                    totalPrice += orderDetail.Ticket.Price * orderDetail.Quantity;
+                }
+            }
+        }
+    <p>Totaal: @totalPrice</p>
+</div>
+
+<div class="payment-methods">
+    <p>Kies een betaalmethode:</p>
+    <div class="payment-method">
+        <input type="radio" id="creditCard" name="paymentMethod" value="creditCard">
+        <label for="creditCard">Creditcard</label>
+    </div>
+    <div class="payment-method">
+        <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+        <label for="paypal">PayPal</label>
+    </div>
+    <!-- Voeg hier meer betaalmethodes toe indien nodig -->
+</div>
+</body>
+</html>

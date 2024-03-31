@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Registreren</title>
+    <style>
+        body {
+            background-color: #f4f4f4; /* Achtergrondkleur instellen */
+            font-family: Arial, sans-serif;
+        }
+
+        .register-container {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px; /* Marge bovenaan aanpassen voor verticale centrering */
+            text-align: center; /* Centreren van inhoud */
+        }
+
+        h2 {
+            color: #4CAF50; /* Tekstkleur instellen */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        button[type="submit"] {
+            width: 100%; /* Volledige breedte van de inputvelden en de knop */
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+        }
+
+        .btn-primary {
+            background-color: #4CAF50; /* Achtergrondkleur van de knop instellen */
+            border: none;
+            color: white; /* Tekstkleur instellen */
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%; /* Volledige breedte van de knop */
+            box-sizing: border-box; /* Inhoud en padding worden meegenomen in de breedte */
+        }
+
+        a {
+            color: #4CAF50; /* Kleur van de koppeling instellen */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registreer</h2>
+        <form method="post" action="register">
+            <div class="form-group">
+                <label for="userName">Gebruikersnaam:</label>
+                <input type="text" id="userName" name="UserName" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password" name="Password" required />
+            </div>
+            <button type="submit" class="btn-primary">Registreer</button>
+        </form>
+        <p>Heb je al een account? <a href="login">Inloggen</a></p>
+    </div>
+</body>
+</html>
